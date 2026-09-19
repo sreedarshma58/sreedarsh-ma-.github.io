@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sreedarsh M.A | Aspiring ML Engineer</title>
+<meta name="description" content="Portfolio of Sreedarsh M.A – BCA graduate, IT support professional, aspiring AI/ML engineer.">
+<style>
+  :root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #1d2433;
+    --muted: #5d6779;
+    --accent: #2c2c30;
+    --accent-2: #596264;
+    --border: #e3e7ef;
+    --shadow: 0 8px 30px rgba(30, 41, 80, 0.08);
+    --radius: 16px;
+  }
+  @media (prefers-color-scheme: dark) 
+    :root {
+      --bg: #0f1420;
+      --card: #171e2e;
+      --text: #e8ecf5;
+      --muted: #9aa5ba;
+      --border: #263049;
+      --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1000px; margin: 0 auto; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+  }
+  .logo { font-weight: 700; font-size: 1.1rem; letter-spacing: .3px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .nav-links a { color: var(--muted); font-size: .95rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ---------- HEADER: COVER + PROFILE ---------- */
+  header { max-width: 1000px; margin: 24px auto 0; padding: 0 20px; }
+  .cover {
+    height: 260px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    /* Replace with your own image: add  url("cover.jpg") center/cover  as the first layer */
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.25), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,.18), transparent 45%),
+      linear-gradient(120deg, var(--accent), var(--accent-2));
+    position: relative; overflow: hidden;
+  }
+  .cover img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    padding: 0 32px 32px;
+    display: flex; gap: 28px; align-items: flex-end; flex-wrap: wrap;
+  }
+  .avatar {
+    width: 160px; height: 160px; flex-shrink: 0;
+    margin-top: -80px;
+    border-radius: 50%;
+    border: 6px solid var(--card);
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff; font-size: 3rem; font-weight: 700;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .intro { flex: 1; min-width: 260px; padding-top: 18px; }
+  .intro h1 { font-size: 2rem; line-height: 1.2; }
+  .intro .role { color: var(--accent); font-weight: 600; margin: 4px 0 10px; }
+  .intro p { color: var(--muted); max-width: 620px; }
+  .actions { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 22px; border-radius: 999px; font-weight: 600; font-size: .95rem;
+    border: 2px solid var(--accent); transition: transform .15s, background .2s, color .2s;
+    display: inline-block;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.ghost { color: var(--accent); }
+  .btn.ghost:hover { background: var(--accent); color: #fff; }
+
+  /* ---------- SECTIONS ---------- */
+  main { max-width: 1000px; margin: 0 auto; padding: 0 20px 60px; }
+  section { margin-top: 56px; }
+  section h2 {
+    font-size: 1.6rem; margin-bottom: 22px; display: flex; align-items: center; gap: 12px;
+  }
+  section h2::after { content: ""; flex: 1; height: 2px; background: var(--border); }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+  }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+  .facts { list-style: none; }
+  .facts li { padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: .95rem; }
+  .facts li:last-child { border: none; }
+  .facts b { display: block; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .6px; }
+
+  /* Skills */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .chip {
+    padding: 6px 14px; border-radius: 999px; font-size: .85rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent); font-weight: 600;
+  }
+  .chip.learning { background: color-mix(in srgb, var(--accent-2) 15%, transparent); color: var(--accent-2); }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; }
+  .project {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+    transition: transform .2s;
+  }
+  .project:hover { transform: translateY(-5px); }
+  .thumb {
+    height: 150px; display: grid; place-items: center; font-size: 2.6rem; color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+  .thumb.alt1 { background: linear-gradient(135deg, #f97316, #ec4899); }
+  .thumb.alt2 { background: linear-gradient(135deg, #10b981, #3b82f6); }
+  .project-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .project-body h3 { font-size: 1.1rem; }
+  .project-body p { color: var(--muted); font-size: .92rem; flex: 1; }
+  .project-links { display: flex; gap: 16px; font-size: .9rem; font-weight: 600; color: var(--accent); }
+  .project-links a:hover { text-decoration: underline; }
+
+  /* Resume timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--border);
+  }
+  .t-item { position: relative; margin-bottom: 26px; }
+  .t-item:last-child { margin-bottom: 0; }
+  .t-item::before {
+    content: ""; position: absolute; left: -28px; top: 6px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--accent); border: 3px solid var(--card);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .t-item h3 { font-size: 1.05rem; }
+  .t-item .meta { color: var(--accent); font-size: .85rem; font-weight: 600; margin-bottom: 4px; }
+  .t-item p, .t-item li { color: var(--muted); font-size: .93rem; }
+  .t-item ul { margin: 6px 0 0 18px; }
+  .resume-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .resume-cols h4 { margin-bottom: 18px; font-size: 1.05rem; }
+  .resume-download { margin-top: 24px; text-align: center; }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px; padding: 18px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); transition: transform .2s, border-color .2s;
+  }
+  .contact-item:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .contact-item .ico {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: color-mix(in srgb, var(--accent) 12%, transparent); font-size: 1.3rem;
+  }
+  .contact-item small { display: block; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .5px; }
+  .contact-item span { font-weight: 600; word-break: break-word; }
+
+  footer { text-align: center; padding: 28px 20px; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--border); }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .cover { height: 180px; }
+    .profile-card { padding: 0 20px 26px; justify-content: center; text-align: center; }
+    .avatar { margin-top: -70px; width: 140px; height: 140px; }
+    .intro p { margin: 0 auto; }
+    .actions { justify-content: center; }
+    .about-grid, .resume-cols { grid-template-columns: 1fr; }
+    .nav-inner { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo">Sreedarsh<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- COVER + PROFILE -->
+<header id="top">
+  <div class="cover">
+    <!-- Optional: put your cover photo in the same folder as cover.jpg -->
+    <img src="cover.jpg" alt="" onerror="this.remove()">
+  </div>
+  <div class="profile-card">
+    <div class="avatar">
+      SM
+      <!-- Optional: put your photo in the same folder as profile.jpg -->
+      <img src="profile.jpg" alt="Sreedarsh M.A" onerror="this.remove()">
+    </div>
+    <div class="intro">
+      <h1>Sreedarsh M.A</h1>
+      <p class="role">BCA Graduate &middot; Aspiring AI/ML Engineer</p>
+      <p>
+        IT support professional with hands-on retail ERP &amp; POS experience, now moving into
+        AI and machine learning. Starting my Python journey and looking for an ML internship
+        to learn, build and grow.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="resume.pdf" download>Download Resume</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-grid">
+      <div class="card">
+        <p>
+          I completed my BCA in 2025 and spent about ten months as IT support at Malabar Gold and
+          Diamonds, handling ERP and POS support for retail operations. That role taught me how
+          real business systems run, and how to stay calm and solve problems when people depend on them.
+        </p>
+        <p style="margin-top:12px;">
+          I'm now shifting my career towards AI/ML. I'm beginning with Python, and my target is an
+          ML intern role. I'm also planning to pursue an MCA through the NIMCET entrance exam.
+        </p>
+        <div class="chips">
+          <span class="chip">ERP Support</span>
+          <span class="chip">POS Systems</span>
+          <span class="chip">IT Support</span>
+          <span class="chip">Troubleshooting</span>
+          <span class="chip learning">Python (starting)</span>
+          <span class="chip learning">Machine Learning (goal)</span>
+        </div>
+      </div>
+      <div class="card">
+        <ul class="facts">
+          <li><b>Education</b>BCA, 2025</li>
+          <li><b>Experience</b>~10 months, IT Support</li>
+          <li><b>Currently</b>Learning Python &amp; preparing for NIMCET</li>
+          <li><b>Looking for</b>ML Internship</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <!-- Replace the placeholder cards below with your real projects as you build them -->
+    <div class="projects">
+      <article class="project">
+        <div class="thumb">&#128013;</div>
+        <div class="project-body">
+          <h3>Python Basics Practice</h3>
+          <p>A collection of beginner Python programs: variables, loops, functions and small utilities. (Placeholder: add your repo when ready.)</p>
+          <div class="project-links">
+            <a href="#">GitHub &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb alt1">&#128200;</div>
+        <div class="project-body">
+          <h3>Data Analysis Mini Project</h3>
+          <p>First dataset exploration using Python, with pandas and charts to find simple insights. (Placeholder: coming soon.)</p>
+          <div class="project-links">
+            <a href="#">GitHub &rarr;</a>
+            <a href="#">Live Demo &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb alt2">&#129302;</div>
+        <div class="project-body">
+          <h3>First ML Model</h3>
+          <p>A beginner machine learning project such as a prediction or classification model. (Placeholder: planned.)</p>
+          <div class="project-links">
+            <a href="#">GitHub &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="card">
+      <div class="resume-cols">
+        <div>
+          <h4>&#128188; Experience</h4>
+          <div class="timeline">
+            <div class="t-item">
+              <h3>IT Support</h3>
+              <div class="meta">Malabar Gold and Diamonds &middot; ~10 months &middot; Until Sep 2026</div>
+              <ul>
+                <li>Provided retail support for ERP and POS systems</li>
+                <li>Resolved day-to-day technical issues for store staff</li>
+                <li>Worked across hardware, software and system troubleshooting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>&#127891; Education</h4>
+          <div class="timeline">
+            <div class="t-item">
+              <h3>Master of Computer Applications (MCA)</h3>
+              <div class="meta">Planned &middot; via NIMCET</div>
+              <p>Preparing for the entrance exam.</p>
+            </div>
+            <div class="t-item">
+              <h3>Bachelor of Computer Applications (BCA)</h3>
+              <div class="meta">St. Philomena's College, Bannimantap &middot; 2025</div>
+              <p>CGPA: 6.74</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resume-download">
+        <a class="btn primary" href="resume.pdf" download>&#11015; Download Full Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <!-- Replace the placeholder values with your real details -->
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:sreedarsh03@gmail.com">
+        <div class="ico">&#9993;&#65039;</div>
+        <div><small>Email</small><span>sreedarsh03@gmail.com</span></div>
+      </a>
+      <a class="contact-item" href="tel:+918088168951">
+        <div class="ico">&#128222;</div>
+        <div><small>Phone</small><span>+918088168951</span></div>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/sreedarsh-m-a-910321386/" target="_blank" rel="noopener">
+        <div class="ico">&#128188;</div>
+        <div><small>LinkedIn</small><span>profile</span></div>
+      </a>
+      <a class="contact-item" href="https://github.com/your-username" target="_blank" rel="noopener">
+        <div class="ico">&#128187;</div>
+        <div><small>GitHub</small><span>github.com/your-username</span></div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Sreedarsh M.A. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
